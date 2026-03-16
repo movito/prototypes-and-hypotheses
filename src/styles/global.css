@@ -1,0 +1,227 @@
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── Colors ──────────────────────────────────────── */
+  --color-bg: #faf9f7;
+  --color-text: #1a1a2e;
+  --color-text-secondary: #666;
+  --color-text-muted: #999;
+  --color-border: #e0ddd8;
+  --color-surface: #ffffff;
+
+  /* ── Typography ──────────────────────────────────── */
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-size-xs: 9px;
+  --font-size-sm: 11px;
+  --font-size-base: 14px;
+  --font-size-lg: 26px;
+
+  --type-weight-medium: 500;
+  --type-weight-semibold: 600;
+  --type-line-height-tight: 1.1;
+  --type-line-height-normal: 1.2;
+  --type-line-height-relaxed: 1.4;
+  --type-line-height-loose: 1.5;
+
+  /* Fibonacci type scale base sizes (8:13:21 ratios computed at runtime) */
+  --type-node-base: 11;
+  --type-node-large-base: 14;
+  --type-edge-min: 7;
+
+  /* ── Opacity (interaction states) ────────────────── */
+  --opacity-node-dimmed: 0.15;
+  --opacity-edge-dimmed: 0.1;
+  --opacity-edge-default: 0.4;
+  --opacity-cluster-label: 0.7;
+  --opacity-cluster-stroke: 0.2;
+
+  /* ── Spacing (8px grid) ──────────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 40px;
+  --space-3xl: 80px;
+
+  /* ── Cluster colors (optional CSS overrides) ──────
+     Primary colors come from graph.json cluster.color.
+     Define --cluster-<key>-color / -fill here to override. */
+
+  /* ── Node sizes ────────────────────────────────── */
+  --size-node-small: 32;
+  --size-node-default: 36;
+  --size-node-large: 48;
+  --size-node-large-threshold: 40;
+
+  /* ── Sizing ──────────────────────────────────────── */
+  --stroke-node-default: 1.5;
+  --stroke-node-highlighted: 2;
+  --stroke-node-selected: 3;
+  --stroke-edge-default: 1;
+  --stroke-edge-highlighted: 1.5;
+  --stroke-label-halo: 3;
+
+  --size-marker-width: 8;
+  --size-marker-height: 6;
+  --size-indicator: 12px;
+
+  /* ── Radii ───────────────────────────────────────── */
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-btn: 6px;
+
+  /* ── Transitions ─────────────────────────────────── */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* ── Citation links ────────────────────────────────── */
+
+.citation-link {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.citation-link:hover {
+  color: var(--color-text);
+  text-decoration-color: var(--color-text-secondary);
+}
+
+.citation-link:visited {
+  color: var(--color-text-muted);
+}
+
+/* ── Animations ─────────────────────────────────────── */
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── SVG Node interactions ──────────────────────────── */
+
+.node-group {
+  cursor: grab;
+  transform-origin: var(--cx) var(--cy);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.node-group:hover {
+  transform: scale(1.05);
+}
+
+.node-group:focus {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+.node-group:active {
+  cursor: grabbing;
+}
+
+/* ── Reduced motion ─────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .node-group {
+    transition: none;
+  }
+
+  .node-group:hover {
+    transform: none;
+  }
+}
+
+/* ── Export controls ────────────────────────────────── */
+
+.export-controls {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  display: flex;
+  gap: var(--space-sm);
+  z-index: 10;
+}
+
+.export-btn {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-body);
+  font-weight: var(--type-weight-medium);
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.export-btn:hover {
+  background: var(--color-bg);
+  transform: scale(1.03);
+}
+
+/* ── Narrow screens ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .export-controls {
+    top: auto;
+    bottom: 48px;
+    right: var(--space-lg);
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}

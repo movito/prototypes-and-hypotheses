@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Edges connecting nodes -->
+  <line x1="16" y1="8" x2="6" y2="22" stroke="#b5651d" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="16" y1="8" x2="26" y2="22" stroke="#2d6a4f" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="6" y1="22" x2="26" y2="22" stroke="#7b5ea7" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="16" y1="8" x2="16" y2="28" stroke="#9b2226" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="6" y1="22" x2="16" y2="28" stroke="#555555" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="26" y1="22" x2="16" y2="28" stroke="#555555" stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- Nodes -->
+  <circle cx="16" cy="8" r="4" fill="#2d6a4f"/>
+  <circle cx="6" cy="22" r="3.5" fill="#7b5ea7"/>
+  <circle cx="26" cy="22" r="3.5" fill="#b5651d"/>
+  <circle cx="16" cy="28" r="3" fill="#9b2226"/>
+</svg>

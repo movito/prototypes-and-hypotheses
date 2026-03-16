@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "Your Graph Title",
+    "subtitle": "A 1-2 sentence description of the landscape this graph maps. Explains to the viewer what the nodes and connections represent and why they matter.",
+    "note": "Click or hover on nodes to explore connections. Drag nodes to reposition. Press D to dump positions to console, S to export SVG, P to export PNG."
+  },
+  "sources": {
+    "Author, Year": {
+      "title": "Full title of the cited work",
+      "url": "https://example.com/link-to-source"
+    },
+    "Second Author, Year": {
+      "title": "Another source title",
+      "url": "https://example.com/another-source"
+    }
+  },
+  "clusters": {
+    "center": {
+      "label": "",
+      "color": "#1a1a2e"
+    },
+    "cluster_a": {
+      "label": "Cluster A Label",
+      "color": "#4a6fa5"
+    },
+    "cluster_b": {
+      "label": "Cluster B Label",
+      "color": "#2d6a4f"
+    },
+    "cluster_c": {
+      "label": "Cluster C Label",
+      "color": "#b5651d"
+    }
+  },
+  "nodes": [
+    {
+      "id": "central_concept",
+      "label": "Central\nConcept",
+      "x": 500,
+      "y": 400,
+      "cluster": "center",
+      "description": "The anchoring concept of the graph. This is the node everything else connects to. It frames the question or theme the graph explores.",
+      "size": "large"
+    },
+    {
+      "id": "concept_a1",
+      "label": "Concept A1",
+      "x": 240,
+      "y": 200,
+      "cluster": "cluster_a",
+      "description": "Description of this concept. Can reference sources using parenthetical citations like (Author, Year). Multiple citations in one group use semicolons: (Author, Year; Second Author, Year).",
+      "size": "default"
+    },
+    {
+      "id": "concept_a2",
+      "label": "Concept A2",
+      "x": 180,
+      "y": 340,
+      "cluster": "cluster_a",
+      "description": "Another concept in Cluster A. Related to concept_a1 but distinct.",
+      "size": "small"
+    },
+    {
+      "id": "concept_b1",
+      "label": "Concept B1",
+      "x": 760,
+      "y": 200,
+      "cluster": "cluster_b",
+      "description": "A concept in Cluster B. Descriptions should be 1-3 sentences: enough to orient the reader without overwhelming.",
+      "size": "default"
+    },
+    {
+      "id": "concept_c1",
+      "label": "Concept C1",
+      "x": 500,
+      "y": 650,
+      "cluster": "cluster_c",
+      "description": "A concept in Cluster C.",
+      "size": "default"
+    }
+  ],
+  "edges": [
+    {
+      "from": "central_concept",
+      "to": "concept_a1",
+      "label": "relationship\nlabel"
+    },
+    {
+      "from": "central_concept",
+      "to": "concept_b1",
+      "label": "another\nrelationship"
+    },
+    {
+      "from": "concept_a1",
+      "to": "concept_a2",
+      "label": "within-cluster\nconnection",
+      "style": "dashed"
+    },
+    {
+      "from": "concept_a1",
+      "to": "concept_b1",
+      "label": "cross-cluster\ntension",
+      "style": "dotted"
+    },
+    {
+      "from": "central_concept",
+      "to": "concept_c1"
+    }
+  ]
+}
